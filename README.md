@@ -3,6 +3,7 @@
 Mod/plugin para fazer os motoristas contratados do Euro Truck Simulator 2 existirem fisicamente no mapa.
 
 - `docs/ETAPA1_RELATORIO_VIABILIDADE.md` – relatório de viabilidade (Etapa 1)
+- `docs/GUIA_ETAPA2_PASSO_A_PASSO.md` – guia passo a passo para gerar o log da frota
 - `tools/fleet_reader/` – Etapa 2: leitor somente leitura do `game.sii` que gera `living_fleet_log.txt`
 
 ## Usar o fleet_reader (Windows)

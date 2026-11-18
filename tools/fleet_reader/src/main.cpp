@@ -48,6 +48,18 @@ static fs::path findNewestSave() {
     return best;
 }
 
+// Pasta onde esta o fleet_reader.exe (o log e salvo ali, mesmo ao arrastar o save sobre o .exe).
+static fs::path exeDir(const char* argv0) {
+#ifdef _WIN32
+    wchar_t buf[MAX_PATH];
+    DWORD n = GetModuleFileNameW(nullptr, buf, MAX_PATH);
+    if (n > 0 && n < MAX_PATH) return fs::path(buf).parent_path();
+#endif
+    std::error_code ec;
+    fs::path p = fs::absolute(fs::u8path(argv0), ec);
+    return ec ? fs::current_path() : p.parent_path();
+}
+
 static int finish(int code) {
 #ifdef _WIN32
     // Executado com duplo clique: mantem a janela aberta para o usuario ler.
@@ -67,7 +79,7 @@ int main(int argc, char** argv) {
                      "ou rode: fleet_reader.exe \"C:\\caminho\\game.sii\"\n";
         return finish(1);
     }
-    fs::path output = argc > 2 ? fs::u8path(argv[2]) : fs::current_path() / "living_fleet_log.txt";
+    fs::path output = argc > 2 ? fs::u8path(argv[2]) : exeDir(argv[0]) / "living_fleet_log.txt";
 
     std::ifstream f(input, std::ios::binary);
     if (!f) {
