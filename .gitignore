@@ -1,0 +1,4 @@
+dist/
+build/
+*.log
+living_fleet_log.txt

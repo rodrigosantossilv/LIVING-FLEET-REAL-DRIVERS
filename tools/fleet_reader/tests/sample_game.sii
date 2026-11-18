@@ -1,0 +1,69 @@
+SiiNunit
+{
+# ARQUIVO SINTETICO PARA TESTE - NAO E UM SAVE REAL.
+# A estrutura imita saves de versoes anteriores; precisa ser confirmada com um save da 1.61.
+player : _nameless.p1 {
+ assigned_truck: _nameless.v0
+ trucks: 2
+ trucks[0]: _nameless.v0
+ trucks[1]: _nameless.v1
+}
+
+garage : garage.berlin {
+ vehicles: 2
+ vehicles[0]: _nameless.v1
+ vehicles[1]: null
+ drivers: 2
+ drivers[0]: driver.carlos
+ drivers[1]: null
+ status: 2
+}
+
+driver_ai : driver.carlos {
+ adr: 0
+ long_dist: 2
+ state: 1
+ on_duty_timer: 3600
+ hometown: berlin
+ current_city: frankfurt
+ experience_points: 1200
+ training_policy: 0
+ driver_job: _nameless.j1
+ assigned_truck: _nameless.v1
+ profit_log: _nameless.pl1
+}
+
+job_info : _nameless.j1 {
+ cargo: cargo.goods
+ source_company: company.volatile.tradeaux.frankfurt
+ target_company: company.volatile.stokes.berlin
+ planned_distance_km: 552
+ start_time: 41230
+ is_articulated: true
+}
+
+vehicle : _nameless.v1 {
+ accessories: 3
+ accessories[0]: _nameless.a1
+ accessories[1]: _nameless.a2
+ accessories[2]: _nameless.a3
+ odometer: 12000
+ license_plate: "B LF 2026|germany"
+}
+vehicle_accessory : _nameless.a1 {
+ data_path: "/def/vehicle/truck/mercedes.axor/chassis/4x2.sii"
+}
+vehicle_paint_job_accessory : _nameless.a2 {
+ data_path: "/def/vehicle/truck/mercedes.axor/paint_job/default.sii"
+ base_color: (0.5, 0.1, 0.1)
+}
+vehicle_addon_accessory : _nameless.a3 {
+ data_path: "/def/vehicle/truck/mercedes.axor/accessory/f_grill/chrome.sii"
+}
+vehicle : _nameless.v0 {
+ accessories: 0
+}
+profit_log : _nameless.pl1 {
+ stats_data: 0
+}
+}
