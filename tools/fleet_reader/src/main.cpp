@@ -81,6 +81,7 @@ int main(int argc, char** argv) {
     }
     fs::path output = argc > 2 ? fs::u8path(argv[2]) : exeDir(argv[0]) / "living_fleet_log.txt";
 
+    std::cout << "Lendo: " << input.u8string() << "\n";
     std::ifstream f(input, std::ios::binary);
     if (!f) {
         std::cerr << "Nao foi possivel abrir: " << input.u8string() << "\n";
@@ -92,7 +93,8 @@ int main(int argc, char** argv) {
 
     switch (sii::detectKind(data)) {
         case sii::FileKind::BinaryOrEncrypted:
-            std::cerr << "O save esta em formato binario/criptografado.\n"
+            std::cerr << "Arquivo lido: " << input.u8string() << "\n"
+                      << "O save esta em formato binario/criptografado.\n"
                          "No jogo: abra o console e digite  g_save_format 2  e depois salve o jogo\n"
                          "(ou edite config.cfg: uset g_save_format \"2\"). Entao rode novamente.\n";
             return finish(2);
